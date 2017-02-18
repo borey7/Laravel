@@ -30,3 +30,29 @@ Route::get('/', 'HelloController@hw15feb');
 Route::post('/isPrime', 'HelloController@isPrime');
 Route::post('/printPrime', 'HelloController@printPrime');
 Route::post('/colorPrime', 'HelloController@colorPrime');
+
+
+//pass value Rout to View
+Route::get('/pass_value_R2V', function() 	
+{
+		$name = "Jonhn";
+		$surename = "Eltone .Mass";
+		// return view('pass_value_R2V', ['name'=> $name],
+		// 							  ['surename'=> $surename]	);
+		return view('pass_value_R2V')
+			->with('name', $name)
+			->with('surename', $surename);
+});
+
+//layout
+Route::get('layout', function () {
+	$array = [1,2,3,4,5];
+    return view('layout1')
+    	->with('array', $array);
+});
+
+//hw22Feb
+Route::get('/hw22feb', 'HelloController@hw22feb');
+Route::post('/hw22feb_isPrime', 'HelloController@hw22feb_isPrime');
+Route::post('/hw22feb_printPrime', 'HelloController@hw22feb_printPrime');
+Route::post('/hw22feb_colorPrime', 'HelloController@hw22feb_colorPrime');

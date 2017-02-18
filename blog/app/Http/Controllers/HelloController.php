@@ -60,6 +60,7 @@ class HelloController extends Controller
 		$number = $request->input('number');
 		
 		if($number==1 || $number=="") return "<h1>".$number." is not prime number.</h1>";
+		
 		for ($i=2; $i*$i<=$number; $i++) 
 			if ($number%$i == 0) return "<h1>".$number." is not prime number.</h1>";
 		return "<h1>".$number." is a prime number.</h1>";		
@@ -83,7 +84,7 @@ class HelloController extends Controller
 		$n = $request->input('number');
 		echo "Prime number between 1 to ".$n." are : ";
 		$all_prime = array();
-		$idx = -1;
+		$idx = 0;
 		for($number=2;$number<=$n;$number++)
 		{			
 			$p = 1;
@@ -97,12 +98,77 @@ class HelloController extends Controller
 			}
 		}
 
-		for($i=0;$i<=$idx;$i++)
+		for($i=1;$i<=$idx;$i++)
 		{
-			if($i==0) echo "<p style='color:red;display:inline;'>".$all_prime[$i].' </p>';
+						
+			if($i==1) echo "<p style='color:red;display:inline;'>".$all_prime[$i].' </p>';			
 			else if($i==$idx) echo "<p style='color:red;display:inline;'>".$all_prime[$i].' </p>';
+			elseif($i%2==0) 
+				echo "<p style='color:green;display:inline;'>".$all_prime[$i].' </p>';
+			elseif($i%5==0)
+				echo "<p style='color:blue;display:inline;'>".$all_prime[$i].' </p>';
 			else echo $all_prime[$i]." ";
+		}		
+	}
+
+	//hw22feb
+	//isPrime?
+	function hw22feb()
+	{
+		return view('hw22feb');
+	}	
+	
+	function hw22feb_isPrime(Request $request)
+	{
+		$number = $request->input('number');
+		
+		if($number==1 || $number=="") return view('hw22feb_isPrime', 
+											['number'=>$number], 
+											['ans' => 0]);			
+		
+		for ($i=2; $i*$i<=$number; $i++) 
+			if ($number%$i == 0) return view('hw22feb_isPrime', 
+											['number'=>$number], 
+											['ans' => 0]);
+		return view('hw22feb_isPrime',
+					['number'=>$number], 
+					['ans' => 1]);		
+	}
+	
+	function hw22feb_printPrime(Request $request)
+	{
+		$n = $request->input('number');		
+		$p_number = array();
+		$idx = -1;
+		for($number=2;$number<=$n;$number++)
+		{			
+			$p = 1;
+			for ($i=2; $i*$i<=$number; $i++) 
+				if ($number%$i == 0) {$p=0; break;}
+			if($p==1) {$idx++; $p_number[$idx] = $number;}
 		}
+
+		return view('hw22feb_printPrime', 
+							['p_prime' => $p_number],
+							['n' => $n]);
+	}
+
+	function hw22feb_colorPrime(Request $request)
+	{
+		$n = $request->input('number');		
+		$p_number = array();
+		$idx = 0;
+		for($number=2;$number<=$n;$number++)
+		{			
+			$p = 1;
+			for ($i=2; $i*$i<=$number; $i++) 
+				if ($number%$i == 0) {$p=0; break;}
+			if($p==1) {$idx++; $p_number[$idx] = $number;}
+		}
+
+		return view('hw22feb_colorPrime', 
+							['p_prime' => $p_number],
+							['n' => $n]);
 	}
 }
 
