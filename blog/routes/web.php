@@ -54,5 +54,12 @@ Route::get('layout', function () {
 //hw22Feb
 Route::get('/hw22feb', 'HelloController@hw22feb');
 Route::post('/hw22feb_isPrime', 'HelloController@hw22feb_isPrime');
-Route::post('/hw22feb_printPrime', 'HelloController@hw22feb_printPrime');
+Route::post('/hw22feb_printPrime', '<HelloController@hw22feb></HelloController@hw22feb>_printPrime');
 Route::post('/hw22feb_colorPrime', 'HelloController@hw22feb_colorPrime');
+
+
+//hw01mar
+Route::get('/hw01mar', 'HelloController@hw01mar');
+Route::post('/hw01mar_isPrime', 'HelloController@hw01mar_isPrime');
+Route::post('/hw01mar_printPrime', 'HelloController@hw01mar_printPrime');
+Route::post('/hw01mar_colorPrime', 'HelloController@hw01mar_colorPrime');

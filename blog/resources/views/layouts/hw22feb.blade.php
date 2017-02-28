@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>hw22feb - @yield('title')</title>
+        <title>hw - @yield('title')</title>
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
@@ -9,7 +9,7 @@
             <div class="container">
                 <h2>
                     @section('sidebar')  
-                        Howework 22 Feb - Layout                        
+                        Howework - Layout                        
                     @show
                 </h2>
             </div>                
